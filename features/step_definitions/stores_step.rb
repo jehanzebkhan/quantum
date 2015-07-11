@@ -13,6 +13,20 @@ Then(/^I should see stores table$/) do |expected_table|
   expect(expected_table.rows).to eq(stores_table)
 end
 
+Given(/^I am on the add new (.+)$/) do | page_name |
+  visit "/#{page_name.pluralize}/new"
+end
+
+When(/^I fill out the form with the following attribute$/) do |table|
+  table.rows_hash.each do |field, value|
+    fill_in field, with: value
+  end
+end
+
+When(/^I press (.+)$/) do | button |
+  click_button button
+end
+
 And /^(?:|I )pause$/ do
   STDERR.puts 'Pausing - press any key to continue'
   STDIN.getc

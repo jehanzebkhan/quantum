@@ -14,3 +14,12 @@ Feature: Manage Store
       | Aldi          |
       | Coles         |
       | Woolworth     |
+
+  Scenario: New Store
+    Given I am on the add new store
+    When I fill out the form with the following attribute
+      | name | Safeway |
+    And I press Save
+    Then I should see stores table
+    | name    |
+    | Safeway |
